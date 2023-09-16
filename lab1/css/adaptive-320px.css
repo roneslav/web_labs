@@ -1,0 +1,162 @@
+@media only screen and (max-width: 321px) {
+    .logo{
+        margin-left: 90px;
+    }
+    .name{
+        margin-left: 10px;
+        justify-content: center;
+        text-align: center;
+    }
+    .menu__item {
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+    ul.menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 0;
+    }
+    li.menu__item{
+        width: 200px;
+    }
+
+    a{
+        width: 200px;
+        height: 40px;
+    }
+
+    .signin{
+        text-align: center;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    .vpn__title{
+        font-size: 40px;
+    }
+
+    .getStarted{
+        width: 280px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .illustration1__item{
+        width: 280px;
+        height: 200px;
+        margin-left: auto;
+        margin-top: 40px;
+    }
+
+    .illustration2__item{
+        width: 280px;
+        height: 200px;
+        margin-left: auto;
+        margin-top: auto;
+    }
+
+    .features__title{
+        margin-left: auto;
+        margin-top: 10px;
+        font-size: 35px;
+        text-align: center;
+        width: 290px;
+    }
+
+    .features__text{
+        margin-left: auto;
+        margin-top: 50px;
+        width: 270px;
+
+    }
+
+    .pointer__item{
+        margin-left: auto;
+        width: 270px;
+    }
+
+    .comments__title{
+        margin-left: auto;
+        width: 300px;
+    }
+
+    .comments__text{
+        margin-left: auto;
+        margin-top: 50px;
+        width: 270px;
+        text-align: left;
+    }
+
+    .firstComment{
+        margin-top: 120px;
+        width: 290px;
+    }
+
+    .comment__desk1{
+        width: 250px;
+    }
+
+    .secondComment{
+        margin-top: 10px;
+        width: 290px;
+    }
+
+    .comment__desk2{
+        width: 250px;
+    }
+
+    .name2{
+        width: 120px;
+        height: 10px;
+    }
+
+    .thirdComment{
+        margin-top: 10px;
+        width: 290px;
+    }
+
+    .comment__desk3{
+        width: 250px;
+    }
+
+    .subscribe__title{
+        margin-left: auto;
+        width: 300px;
+        margin-top: 50px;
+    }
+
+    .subscribe__text{
+        margin-left: auto;
+        width: 290px;
+        margin-top: 100px;
+    }
+
+    .subscribeButton{
+        margin-left: auto;
+        margin-top: 50px;
+        width: 290px;
+    }
+
+    ul.socials{
+        margin-left: auto;
+        margin-top: auto;
+        width: 300px;
+    }
+
+    li.socials__item{
+        width: 290px;
+        margin-left: auto;
+        justify-content: center;
+    }
+
+    .logotype__icon{
+        margin-top: 15px;
+    }
+
+    .logotype__text{
+        margin-top: 23px;
+    }
+}
