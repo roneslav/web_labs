@@ -35,6 +35,10 @@
     }
 
     .vpn__title{
+        margin-top: 30px;
+    }
+
+    .vpn__title{
         font-size: 40px;
     }
 
@@ -44,18 +48,11 @@
         text-align: center;
     }
 
-    .illustration1__item{
-        width: 280px;
-        height: 200px;
-        margin-left: auto;
-        margin-top: 40px;
-    }
-
     .illustration2__item{
         width: 280px;
         height: 200px;
         margin-left: auto;
-        margin-top: auto;
+        margin-top: 0;
     }
 
     .features__title{
@@ -123,40 +120,60 @@
     }
 
     .subscribe__title{
-        margin-left: auto;
         width: 300px;
         margin-top: 50px;
+        margin-left: 10px;
     }
 
     .subscribe__text{
-        margin-left: auto;
         width: 290px;
         margin-top: 100px;
+        margin-left: 10px;
     }
 
     .subscribeButton{
         margin-left: auto;
         margin-top: 50px;
+        margin-bottom: 30px;
         width: 290px;
     }
 
     ul.socials{
-        margin-left: auto;
+        margin-left: 0;
         margin-top: auto;
         width: 300px;
     }
 
     li.socials__item{
-        width: 290px;
-        margin-left: auto;
+        width: 320px;
         justify-content: center;
+        list-style-type: none;
     }
 
-    .logotype__icon{
+    .logotype__icon {
         margin-top: 15px;
+        margin-left: 0;
     }
-
     .logotype__text{
         margin-top: 23px;
+        margin-left: 10px;
+    }
+
+    .marker__text{
+        margin: auto;
+    }
+
+    .logotype{
+        width: 220px;
+        justify-content: start;
+        margin-bottom: 30px;
+    }
+
+    .marker{
+        margin-top: 10px;
+    }
+
+    .illustration1{
+        display: none;
     }
 }

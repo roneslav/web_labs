@@ -1,15 +1,4 @@
-.menu {
-    margin-top: 51px;
-    margin-left: 107px;
-    list-style-type: none;
-}
-
-.menu__item{
-    font-weight: 400;
-    font-size: 18px;
-    color: #4F5665;
-    display: block;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 
 .logo{
     margin-top: 42px;
@@ -66,4 +55,8 @@
 
 a{
     color: #4F5665;
+}
+
+#burger, [for=burger]{
+    display: none;
 }
