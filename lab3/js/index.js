@@ -8,8 +8,10 @@ const searchButton = document.getElementById("search_button");
 const clearButton = document.getElementById("clear_find_button");
 const findInput = document.getElementById("search_input");
 const sortSwitch = document.querySelector(".slider.round");
+const countButton = document.getElementById("count_button");
+const totalPriceLabel = document.getElementById("total_price");
 
-let ascendingSort = true;
+let descendingSort = false;
 
 searchButton.addEventListener("click", () => {
   const searchTerm = findInput.value.toLowerCase();
@@ -30,10 +32,10 @@ clearButton.addEventListener("click", () => {
 });
 
 sortSwitch.addEventListener("change", () => {
-  ascendingSort = !sortSwitch.checked;
-  const sortedStones = sortSwitch.checked
-    ? sortStonesByPrice(stones)
-    : stones;
+  descendingSort = sortSwitch.checked;
+  const sortedStones = descendingSort
+    ? sortStonesByPriceDescending(stones)
+    : sortStonesByPriceAscending(stones);
 
   renderItemsList(sortedStones);
 });
@@ -46,6 +48,15 @@ function sortStonesByPrice(stonesList) {
       return b.price - a.price;
     }
   });
+}
+
+countButton.addEventListener("click", () => {
+  const total = calculateTotalPrice();
+  totalPriceLabel.textContent = total + "$";
+});
+
+function calculateTotalPrice() {
+  return stones.reduce((total, stone) => total + parseInt(stone.price), 0);
 }
 
 
