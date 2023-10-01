@@ -48,3 +48,4 @@ export const addItemToPage = (stone) => {
   const itemsContainer = document.getElementById("items_container");
   itemsContainer.appendChild(listItem);
 };
+
