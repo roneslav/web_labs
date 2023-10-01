@@ -1,0 +1,192 @@
+.comments__title{
+    text-align: center;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 50px;
+    width: 392px;
+    height: 100px;
+    color: #0B132A;
+    padding-top: 75px;
+}
+
+.comments__text{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    width: 487px;
+    height: 60px;
+    padding-top: 85px;
+    color: #4F5665;
+}
+
+.firstComment{
+    border: 2px solid #DDDDDD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    width: 351px;
+    height: 230px;
+    display: block;
+    padding-left: 26px;
+    margin-top: 78px;
+    padding-top: 30px;
+}
+
+.firstComment:hover{
+    box-shadow: inset 0 0 0 3px #F53838;
+}
+
+.name1{
+    color: #0B132A;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 30px;
+    width: 122px;
+    height: 18px;
+    padding-left: 10px;
+
+}
+
+.location1{
+    font-weight: 400;
+    color: #4F5665;
+    font-size: 14px;
+    line-height: 30px;
+    width: 110px;
+    height: 14px;
+    margin-top: -30px;
+}
+
+.rate1{
+    color: #0B132A;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    padding-left: 51px;
+    background: url("../img/star.png") no-repeat right top;
+    width: 25px;
+    height: 25px;
+}
+
+.comment__desk1{
+    padding-top: 21px;
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    width: 298px;
+    height: 100px;
+}
+
+.secondComment{
+    border: 2px solid #DDDDDD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    width: 351px;
+    height: 230px;
+    display: block;
+    padding-left: 26px;
+    margin-top: 78px;
+    padding-top: 30px;
+}
+
+.secondComment:hover{
+    box-shadow: inset 0 0 0 3px #F53838;
+}
+
+.name2{
+    color: #0B132A;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 30px;
+    width: 149px;
+    height: 18px;
+    padding-left: 10px;
+
+}
+
+.location2{
+    font-weight: 400;
+    color: #4F5665;
+    font-size: 14px;
+    line-height: 30px;
+    width: 110px;
+    height: 14px;
+    margin-top: -30px;
+}
+
+.rate2{
+    color: #0B132A;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    padding-left: 51px;
+    background: url("../img/star.png") no-repeat right top;
+    width: 25px;
+    height: 25px;
+}
+
+.comment__desk2{
+    padding-top: 40px;
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    width: 298px;
+    height: 100px;
+}
+
+.thirdComment{
+    border: 2px solid #DDDDDD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    width: 351px;
+    height: 230px;
+    display: block;
+    padding-left: 26px;
+    margin-top: 78px;
+    padding-top: 30px;
+}
+
+.thirdComment:hover{
+    box-shadow: inset 0 0 0 3px #F53838;
+}
+
+.name3{
+    color: #0B132A;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 30px;
+    width: 149px;
+    height: 18px;
+    padding-left: 10px;
+
+}
+
+.location3{
+    font-weight: 400;
+    color: #4F5665;
+    font-size: 14px;
+    line-height: 30px;
+    width: 110px;
+    height: 14px;
+    margin-top: -30px;
+}
+
+.rate3{
+    color: #0B132A;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    padding-left: 33px;
+    background: url("../img/star.png") no-repeat right top;
+    width: 25px;
+    height: 25px;
+}
+
+.comment__desk3{
+    padding-top: 40px;
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    width: 298px;
+    height: 100px;
+}

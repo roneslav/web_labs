@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -7,11 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>LaslesVPN</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/adaptive-320px.css">
+    <link rel="stylesheet" href="css/adaptive-2560px.css">
 
 </head>
 <body>
@@ -26,47 +31,56 @@
                         Lasles<span class="logo__item">VPN</span>
                     </div>
                     <div class="col-lg-6">
-                        <nav>
-                            <ul class="menu d-flex justify-content-between">
+                        <nav role="navigation">
+                            <div id="menuToggle">
+                                <input type="checkbox" />
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            <ul id="menu" class="menu d-flex justify-content-between">
                                 <li class="menu__item">
-                                    <a href="#" style="text-decoration: none">
+                                    <a href="#" class="menu__link" >
                                         About
                                     </a>
                                 </li>
                                 <li class="menu__item">
-                                    <a href="#" style="text-decoration: none">
+                                    <a href="#" class="menu__link">
                                         Features
                                     </a>
                                 </li>
                                 <li class="menu__item">
-                                    <a href="#" style="text-decoration: none">
+                                    <a href="#" class="menu__link">
                                         Pricing
                                     </a>
                                 </li>
                                 <li class="menu__item">
-                                    <a href="#" style="text-decoration: none">
+                                    <a href="#" class="menu__link">
                                         Testimonials
                                     </a>
                                 </li>
                                 <li class="menu__item">
-                                    <a href="#" style="text-decoration: none">
+                                    <a href="#" class="menu__link">
                                         Help
                                     </a>
                                 </li>
                             </ul>
+                            </div>
                         </nav>
                     </div>
                     <div class="signin">
-                            Sign in
+                        Sign in
                     </div>
+                    <a href="#">
                         <button class="sign">
                             <span class="sign__icon">
                                 Sign Up
                             </span>
                         </button>
+                    </a>
                 </div>
             </div>
         </div>
+
         <div class="hero">
             <div class="container">
                 <div class="row">
@@ -79,16 +93,18 @@
                                 Provide a network for all your needs with ease
                                 and fun using LaslesVPN discover interesting features from us.
                             </p>
-                            <button class="getStarted">
-                                <span class="started__icon">
-                                    Get started
-                                </span>
-                        </button>
+                            <a href="#">
+                                <button class="getStarted">
+                                    <span class="started__icon">
+                                        Get started
+                                    </span>
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="illustration1">
-                            <img src="img/llustration1.jpg" alt="student behind computer" class="
+                            <img src="img/Illustration 1.png" alt="student behind computer" class="
                             illustration1__item">
                         </div>
                     </div>
@@ -100,13 +116,13 @@
     <section id="features" class="features">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-xs-6">
                     <div class="illustration2">
                         <img src="img/Illustration 2.png" alt="very happy student" class="
                         illustration2__item">
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-xs-6">
                     <div class="features__title">
                         We Provide Many Features You Can Use
                     </div>
@@ -215,20 +231,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="subscribe__title">
-                        Subscribe Now for Get Special Features!
+                    <div class="subscribe-border">
+                        <div class="subscribe__title">
+                            Subscribe Now for Get Special Features!
+                        </div>
+                        <p class="subscribe__text">
+                            Let's subscribe with us and find the fun.
+                        </p>
                     </div>
-                    <p class="subscribe__text">
-                        Let's subscribe with us and find the fun.
-                    </p>
                 </div>
-                <div class="col-lg-6">
-                    <button class="subscribeButton">
-                        <span class="subscribe__icon">
-                            Subscribe Now
-                        </span>
-                    </button>
-                </div>
+                    <div class="col-lg-6">
+                        <a href="#">
+                            <button class="subscribeButton">
+                                <span class="subscribe__icon">
+                                    Subscribe Now
+                                </span>
+                            </button>
+                        </a>
+                    </div>
             </div>
         </div>
     </section>
@@ -246,14 +266,14 @@
                 <div class="col-lg-4">
                     <ul class="socials d-flex justify-content-center">
                         <li class="socials__item socials__item__fb">
-                            <a href=""></a>
+                            <a href="#"></a>
                         </li>
                         <li class="socials__item socials__item__tw">
-                            <a href="">
+                            <a href="#">
                             </a>
                         </li>
                         <li class="socials__item socials__item__ig">
-                            <a href=""></a>
+                            <a href="#"></a>
                         </li>
                     </ul>
                 </div>
@@ -269,7 +289,6 @@
                 </div>
             </div>
         </div>
-
     </footer>
 </body>
 </html>

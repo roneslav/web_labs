@@ -1,0 +1,78 @@
+.footer{
+    background: #F6F5F5;
+    color: #AFB5C0;
+    padding-top: 0;
+}
+
+.marker{
+    margin-top: 81px;
+    left: 150px;
+}
+
+.marker__text{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    width: 132px;
+    height: 30px;
+}
+
+.marker__item{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    list-style-type: none;
+}
+
+li.socials__item{
+    list-style-type: none;
+}
+
+.socials a{
+    list-style: none;
+    margin-top: 78px;
+    display: block;
+}
+
+.socials__item__fb a{
+    background: #F53838 url("../img/facebook.png") no-repeat center center;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+}
+
+.socials__item__tw a{
+    background: #F53838 url("../img/twitter.png") no-repeat center center;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    margin-left: 19px;
+}
+
+.socials__item__ig a{
+    background: #F53838 url("../img/instagram.png") no-repeat center center;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    margin-left: 19px;
+}
+
+.logotype__icon{
+    margin-top: 77px;
+    left: 1142px;
+}
+
+.logotype__text{
+    margin-left: 10px;
+    margin-top: 83px;
+    font-weight: 500;
+    font-size: 20px;
+    width: 103px;
+    height: 24px;
+    color: #0B132A;
+}
+
+.logotype__item{
+    color: #0B132A;
+    font-weight: 700;
+}
