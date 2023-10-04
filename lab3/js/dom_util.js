@@ -8,13 +8,13 @@ export const stones = [
     title: "Rubin",
     description: "It is a beautiful jewelry stone",
     price: "800",
-
   },
   {
     title: "Smaragd",
     description: "It is a beautiful jewelry stone",
     price: "900",
   },
+
 ];
 
 export const renderItemsList = (stones) => {
@@ -22,7 +22,8 @@ export const renderItemsList = (stones) => {
   itemsContainer.innerHTML = "";
 
   stones.forEach((stone) => {
-    addItemToPage(stone);
+    const listItem = addItemToPage(stone);
+    itemsContainer.appendChild(listItem);
   });
 };
 
@@ -45,7 +46,5 @@ export const addItemToPage = (stone) => {
       </div>
     </div>
   `;
-  const itemsContainer = document.getElementById("items_container");
-  itemsContainer.appendChild(listItem);
+  return listItem;
 };
-

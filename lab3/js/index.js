@@ -1,7 +1,7 @@
 import {
   renderItemsList,
   clearInputs,
-  stones,
+  stones, addItemToPage,
 } from "./dom_util.js";
 
 const searchButton = document.getElementById("search_button");
@@ -10,6 +10,7 @@ const findInput = document.getElementById("search_input");
 const sortSwitch = document.getElementById("sort_switch");
 const countButton = document.getElementById("count_button");
 const totalPriceLabel = document.getElementById("total_price");
+const addElement = document.getElementsByClassName("items_container");
 
 let descendingSort = false;
 let currentStones = stones.slice();
@@ -32,14 +33,26 @@ clearButton.addEventListener("click", () => {
   renderItemsList(stones);
 });
 
+function calculateTotalPrice() {
+  const displayedStones = document.querySelectorAll(".first_stone");
+  let total = 0;
+  displayedStones.forEach((stone) => {
+    const stonePriceElement = stone.querySelector(".stone_price");
+    if (stonePriceElement) {
+      const stonePriceText = stonePriceElement.textContent.trim();
+      const stonePrice = parseFloat(stonePriceText.replace("$", ""));
+      if (!isNaN(stonePrice)) {
+        total += stonePrice;
+      }
+    }
+  });
+  return total;
+}
+
 countButton.addEventListener("click", () => {
   const total = calculateTotalPrice();
   totalPriceLabel.textContent = total + "$";
 });
-
-function calculateTotalPrice() {
-  return stones.reduce((total, stone) => total + parseInt(stone.price), 0);
-}
 
 sortSwitch.addEventListener("change", () => {
   descendingSort = sortSwitch.checked;
@@ -54,3 +67,10 @@ function sortStonesByPrice(stones) {
     return descendingSort ? priceB - priceA : priceA - priceB;
   });
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  renderItemsList(stones);
+
+});
+
+
