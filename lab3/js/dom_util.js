@@ -14,7 +14,6 @@ export const stones = [
     description: "It is a beautiful jewelry stone",
     price: "900",
   },
-
 ];
 
 export const renderItemsList = (stones) => {

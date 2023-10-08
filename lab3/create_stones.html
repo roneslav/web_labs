@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Stones</title>
+
+  <link rel="stylesheet" href="./css/create_stones.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+    <header id="header" class="header">
+      <div class="main-header">
+        <div class="container">
+          <div class="row mb-3">
+            <div class="logo col-md-1">
+              My STONE
+            </div>
+            <div class="col-md-3">
+              <div class="tabs">
+                <a href="index.html" class="my_stones" id="my_stones">
+                  My Stones
+                </a>
+                <a href="create_stones.html" class="create_stones" id="create_stones">
+                  Create Stones
+                </a>
+              </div>
+            </div>
+            <div class="col-md-5 d-flex justify-content-end"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+  <section id="create_stone" class="crete-stone">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <div class="create_stone_title">Create stone</div>
+          <div class="create_title_input">
+            Title<br>
+            <select name="stones" id="stone-select" required>
+              <option value="">Select a title</option>
+              <option value="Diamond">Diamond</option>
+              <option value="Smaragd">Smaragd</option>
+              <option value="Rubin">Rubin</option>
+              <option value="Stone">Stone</option>
+            </select><br>
+            Description<br>
+            <input id="description_input" type="text" class="description-control" placeholder="Type something..." required/><br>
+            Daily expenses ($)<br>
+            <input id="expenses_input" type="number" class="expenses-control" placeholder="Example, 5" min="1" step="1" required/><br>
+
+            <form id="create_stone_form" class="create_stone_form">
+              <button id="submit_button" type="button">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+    </div>
+  </section>
+
+<script type="module" src="./js/index.js"></script>
+</body>
+</html>
