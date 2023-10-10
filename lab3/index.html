@@ -33,11 +33,8 @@
             </div>
             <div class="col-md-3">
               <div class="tabs">
-                <a href="index.html" class="my_stones" id="my_stones">
+                <a href="#" class="my_stones" id="my_stones">
                   My Stones
-                </a>
-                <a href="create_stones.html" class="create_stones" id="create_stones">
-                  Create Stones
                 </a>
               </div>
             </div>
@@ -92,11 +89,33 @@
             </div>
           </form>
         </div>
+        <div class="col-md-4 mt-2">
+          <ul id="items_container" class="col-md-4">
+            <!-- Сюди будуть додаватися <li> елементи через JavaScript -->
+          </ul>
+        </div>
+        <div class="col-md-5 mt-2">
+          <div class="create_stone_title">Create stone</div>
+          <div class="create_title_input">
+            <form id="stoneForm" class="create_stone_form">
+              <label for="stone-select">Title</label><br>
+              <select name="stones" id="stone-select" required>
+                <option value="">Select a title</option>
+                <option value="Diamond">Diamond</option>
+                <option value="Smaragd">Smaragd</option>
+                <option value="Rubin">Rubin</option>
+                <option value="Stone">Stone</option>
+              </select><br>
+              <label for="description_input">Description</label><br>
+              <input id="description_input" type="text" class="description-control" placeholder="Type something..." required/><br>
+              <label for="expenses_input">Daily expenses ($)</label><br>
+              <input id="expenses_input" type="number" class="expenses-control" placeholder="Example, 5" min="1" step="1" required/><br>
 
-        <ul id="items_container" class="col-md-8">
-          <!-- Сюди будуть додаватися <li> елементи через JavaScript -->
-        </ul>
-        
+              <button id="submit_button" type="submit" >Submit</button>
+            </form>
+          </div>
+        </div>
+        </div>
       </div>
     </div>
 

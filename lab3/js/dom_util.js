@@ -16,11 +16,11 @@ export const stones = [
   },
 ];
 
-export const renderItemsList = (stones) => {
+export const renderItemsList = (stoneArray) => {
   const itemsContainer = document.getElementById("items_container");
-  itemsContainer.innerHTML = "";
+  itemsContainer.innerHTML = '';
 
-  stones.forEach((stone) => {
+  stoneArray.forEach((stone) => {
     const listItem = addItemToPage(stone);
     itemsContainer.appendChild(listItem);
   });
@@ -47,3 +47,36 @@ export const addItemToPage = (stone) => {
   `;
   return listItem;
 };
+
+export function createEditForm(stone, onSave) {
+  const editForm = document.createElement("div");
+  editForm.classList.add("edit-form");
+  editForm.innerHTML = `
+    <h3>Edit Stone</h3>
+    <label for="edit-title">Title:</label>
+    <input type="text" id="edit-title" value="${stone.title}">
+    <label for="edit-description">Description:</label>
+    <input type="text" id="edit-description" value="${stone.description}">
+    <label for="edit-price">Price:</label>
+    <input type="number" id="edit-price" value="${stone.price}">
+    <button id="submit-edit">Submit Changes</button>
+  `;
+
+  const submitEditButton = editForm.querySelector("#submit-edit");
+  submitEditButton.addEventListener("click", () => {
+    const editedTitle = editForm.querySelector("#edit-title").value;
+    const editedDescription = editForm.querySelector("#edit-description").value;
+    const editedPrice = editForm.querySelector("#edit-price").value;
+
+    const updatedStone = {
+      title: editedTitle,
+      description: editedDescription,
+      price: editedPrice,
+    };
+
+    onSave(updatedStone);
+    editForm.remove();
+  });
+
+  return editForm;
+}

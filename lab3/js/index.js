@@ -2,7 +2,7 @@ import {
   renderItemsList,
   clearInputs,
   stones,
-  addItemToPage,
+  addItemToPage, createEditForm,
 } from "./dom_util.js"
 
 const searchButton = document.getElementById("search_button");
@@ -11,6 +11,7 @@ const findInput = document.getElementById("search_input");
 const sortSwitch = document.getElementById("sort_switch");
 const countButton = document.getElementById("count_button");
 const totalPriceLabel = document.getElementById("total_price");
+const submitButton = document.getElementById("submit_button");
 
 let descendingSort = false;
 
@@ -79,11 +80,8 @@ sortSwitch.addEventListener("change", () => {
   renderItemsList(sortedStones);
 });
 
-window.addEventListener("DOMContentLoaded", () => {
-  renderItemsList(stones);
-});
 
-const submitButton = document.getElementById("submit_button");
+
 submitButton.addEventListener("click", () => {
   // Отримайте значення з полів вводу
   const titleInput = document.getElementById("stone-select");
@@ -98,9 +96,9 @@ submitButton.addEventListener("click", () => {
   if (title && description && price) {
     // Створення нового об'єкта для нового каменя
     const newStone = {
-      title,
-      description,
-      price,
+      title: title,
+      description: description,
+      price: price,
     };
 
     // Додавання нового каменя до масиву stones
@@ -115,11 +113,78 @@ submitButton.addEventListener("click", () => {
     expensesInput.value = "";
 
     // Тут ви також можете виконати збереження даних на сервері або в локальному сховищі.
-
   } else {
     alert("Please fill in all fields before submitting.");
   }
 });
 
-// Виклик функції для початкового відображення списку каменів
-renderItemsList(stones);
+const itemsContainer = document.getElementById("items_container");
+
+itemsContainer.addEventListener("click", (event) => {
+  if (event.target.classList.contains("edit-button")) {
+    // Отримайте індекс кнопки "Edit" і викличте функцію редагування
+    const index = Array.from(itemsContainer.querySelectorAll(".edit-button")).indexOf(event.target);
+    const stoneToEdit = stones[index];
+
+    createEditWindow(stoneToEdit, index);
+  }
+});
+
+function createEditWindow(stone, index) {
+  const editWindow = document.createElement("div");
+  editWindow.classList.add("edit-window");
+  editWindow.innerHTML = `
+    <h3>Edit Stone</h3>
+    <label for="edit-stone-select">Title:</label>
+    <select name="stones" id="edit-stone-select" required>
+      <option value="Diamond">Diamond</option>
+      <option value="Smaragd">Smaragd</option>
+      <option value="Rubin">Rubin</option>
+      <option value="Stone">Stone</option>
+    </select>
+    <label for="edit-description">Description:</label>
+    <input type="text" id="edit-description" value="${stone.description}">
+    <label for="edit-price">Price:</label>
+    <input type="number" id="edit-price" value="${stone.price}">
+    <button id="submit-edit">Submit Changes</button>
+  `;
+
+  // Встановлюємо вибране значення для <select> відповідно до каменя
+  const stoneSelect = editWindow.querySelector("#edit-stone-select");
+  stoneSelect.value = stone.title;
+
+  // Отримуємо контейнер для каменів і додаємо вікно редагування до нього
+  const itemsContainer = document.getElementById("items_container");
+  itemsContainer.appendChild(editWindow);
+
+  // Конфігуруємо кнопку "Submit Changes" для збереження змін
+  configureSubmitEditButton(editWindow, index);
+}
+
+
+function configureSubmitEditButton(editWindow, index) {
+  // Додаємо подію для кнопки "Submit Changes"
+  const submitEditButton = editWindow.querySelector("#submit-edit");
+  submitEditButton.addEventListener("click", () => {
+    // Отримуємо оновлені дані з вікна редагування
+    const editedTitle = editWindow.querySelector("#edit-stone-select").value;
+    const editedDescription = editWindow.querySelector("#edit-description").value;
+    const editedPrice = editWindow.querySelector("#edit-price").value;
+
+    // Оновлюємо дані каменя в масиві
+    stones[index].title = editedTitle;
+    stones[index].description = editedDescription;
+    stones[index].price = editedPrice;
+
+    // Оновлюємо відображення списку каменів на сторінці "My Stones"
+    renderItemsList(stones);
+
+    // Закриваємо вікно редагування
+    editWindow.remove();
+  });
+}
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  renderItemsList(stones);
+});
