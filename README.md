@@ -18,9 +18,5 @@
 Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab_four_updated)
 ***
 ### Лабораторна робота №5 (Варіант 17)
-Посилання на вітку (https://github.com/kmariasksks/web/tree/lab5)
-***
-
-### Лабораторна робота №6 (Варіант 17)
 Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab5)
 ***
