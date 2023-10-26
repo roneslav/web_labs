@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit stone</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Edit stone</h1>
+    <form id="typeForm">
+        <label for="title">Title:</label>
+        <select id="title" name="title">
+            <option value="Diamond">Diamond</option>
+            <option value="Smaragd">Smaragd</option>
+            <option value="Rubin">Rubin</option>
+            <option value="Stone">Stone</option>
+        </select>
+
+        <p>Description</p>
+        <textarea id="description" rows="5" class="form-control"></textarea>
+
+        <p>Price ($)</p>
+        <input id="price" type="number" class="form-control" placeholder="" min="1" />
+        <p id="error_message" style="color:red;"></p>
+
+        <button id="save_button" type="button">Save</button>
+    </form>
+
+    <script type="module" src="js/edit.js"></script>
+</body>
+
+</html>
