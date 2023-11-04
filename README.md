@@ -16,10 +16,17 @@
 ***
 ### Лабораторна робота №4 (Варіант 17)
 Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab_four_updated)
+
 ***
 ### Лабораторна робота №5 (Варіант 17)
 Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab5)
+
 ***
 ### Лабораторна робота №6 (Варіант 17)
 Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab6)
+
+***
+### Лабораторна робота №7 (Варіант 17)
+Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab7)
+
 ***
