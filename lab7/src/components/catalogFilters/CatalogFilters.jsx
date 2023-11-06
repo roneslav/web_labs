@@ -1,5 +1,7 @@
 import './catalogFilters.css'
 import ButtonApply from "../buttonApply/ButtonApply";
+import Select from "../select/Select";
+import React from "react";
 
 function CatalogFilters(){
     const nameOptions = [
@@ -9,6 +11,7 @@ function CatalogFilters(){
         { value: "name", label: "Smaragd"},
         { value: "name", label: "Stone"},
     ];
+
 
     const priceOptions = [
         {value: "price", label: "Any price"},
@@ -24,44 +27,43 @@ function CatalogFilters(){
         {value: "strength", label: "high"},
     ];
 
+    const nameSettings = {
+        id: 'filters__by-name',
+        label: 'Filter by name:',
+        name: 'name',
+        class_name: 'name',
+    }
 
+    const priceSettings = {
+        id: 'filters__by-price',
+        label: 'Filter by price:',
+        name: 'price',
+        class_name: 'price',
+    }
+
+    const strengthSettings = {
+        id: 'filters__by-strength',
+        label: 'Filter by strength:',
+        name: 'strength',
+        class_name: 'strength',
+    }
+
+    const selectArray = [
+        { options: nameOptions, settings: nameSettings },
+        { options: priceOptions, settings: priceSettings },
+        { options: strengthOptions, settings: strengthSettings },
+    ];
 
     return(
         <section>
             <div className="catalog-filters">
                 <div className="catalog-filters__types">
-                    <div className="name">
-                        <label htmlFor="filters__by-name" className="filters__by-name">Filter by name:</label>
-                        <select id="filters__by-name" className="filters__by-name" name="name">
-                            {nameOptions.map(option => (
-                                <option key={option.value} value={option.value}>
-                                    {option.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="price">
-                        <label htmlFor="filters__by-price" className="filters__by-price">Filter by price:</label>
-                        <select id="filters__by-price" className="filters__by-price" name="price">
-                            {priceOptions.map(option => (
-                                <option key={option.value} value={option.value}>
-                                    {option.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="strength">
-                        <label htmlFor="filters__by-strength" className="filters__by-strength">Filter by strength:</label>
-                        <select id="filters__by-strength" className="filters__by-strength" name="strength">
-                            {strengthOptions.map(option => (
-                                <option key={option.value} value={option.value}>
-                                    {option.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                    {selectArray.map((single_select) => (
+                        <div className={single_select.settings.class_name}>
+                            <Select options={single_select.options} settings={single_select.settings}/>
+                        </div>
+                    ))}
                 </div>
-
                 <ButtonApply/>
             </div>
         </section>
