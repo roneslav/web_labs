@@ -1,0 +1,4 @@
+.catalog-objects{
+    display: flex;
+    justify-content: space-between;
+}
