@@ -1,3 +1,5 @@
+import React from "react";
+
 import './promo.css'
 import promoImg from './../../img/promo.png'
 
