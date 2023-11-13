@@ -49,8 +49,17 @@ function CatalogObjects() {
     // Check if the selected filter value is not "Any [property]"
     const nameMatch =
       selectedFilters.name !== "Any name" ? object.title === selectedFilters.name : true;
+
+    // Check if the selected price range is not "Any price"
+    const priceRange = selectedFilters.price.split('-');
+    const minPrice = parseFloat(priceRange[0]);
+    const maxPrice = parseFloat(priceRange[1]);
+
     const priceMatch =
-      selectedFilters.price !== "Any price" ? object.price === selectedFilters.price : true;
+      selectedFilters.price !== "Any price"
+        ? object.price >= minPrice && object.price <= maxPrice
+        : true;
+
     const strengthMatch =
       selectedFilters.strength !== "Any strength"
         ? object.strength === selectedFilters.strength
@@ -63,6 +72,8 @@ function CatalogObjects() {
   // Update the state with the filtered objects
   setFilteredObjects(filtered);
 };
+
+
 
   return (
     <section className="catalog">
