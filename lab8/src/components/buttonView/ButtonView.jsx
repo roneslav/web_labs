@@ -11,9 +11,9 @@ import stoneImg from "./../../img/stone.jpg";
 
 
 const newCardsData = [
-    { title: "Stone", img: stoneImg, strength: "high", description: "It is a jewelry stone.", price: "100 $" },
-    { title: "Diamond", img: diamondImg, strength: "high", description: "It is a jewelry stone.", price: "1000 $" },
-    { title: "Rubin", img: rubinImg, strength: "low", description: "It is a jewelry stone.", price: "800 $" },
+    { title: "Stone", img: stoneImg, strength: "high", description: "It is a jewelry stone.", price: 100 },
+    { title: "Diamond", img: diamondImg, strength: "high", description: "It is a jewelry stone.", price: 1000 },
+    { title: "Rubin", img: rubinImg, strength: "low", description: "It is a jewelry stone.", price: 800 },
 ];
 
 function ButtonView() {
@@ -33,7 +33,7 @@ function ButtonView() {
             <div className="container">
                 <div className="button__position">
                     <button className="objects__button" type="button" onClick={() => { setShowMore(!showMore);}}>
-                        {showMore ? "Show less" : "View more"}
+                        {showMore ? "View less" : "View more"}
                     </button>
                 </div>
             </div>

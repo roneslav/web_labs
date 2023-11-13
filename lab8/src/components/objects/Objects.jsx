@@ -10,9 +10,9 @@ import smaragdImg from './../../img/smaragd.jpg'
 import stoneImg from './../../img/stone.jpg'
 
     const cardsData = [
-        { title: "Diamond", img: diamondImg, strength: "high", description: "It is a jewelry stone.", price: "1000 $" },
-        { title: "Rubin", img: rubinImg, strength: "low", description: "It is a jewelry stone.", price: "800 $" },
-        { title: "Smaragd", img: smaragdImg, strength: "medium", description: "It is a jewelry stone.", price: "900 $" },
+        { title: "Diamond", img: diamondImg, strength: "high", description: "It is a jewelry stone.", price: 1000 },
+        { title: "Rubin", img: rubinImg, strength: "low", description: "It is a jewelry stone.", price: 800 },
+        { title: "Smaragd", img: smaragdImg, strength: "medium", description: "It is a jewelry stone.", price: 900 },
         //{ title: "Stone", img: stoneImg, strength: "high", description: "It is a jewelry stone.", price: "100 $" }
     ];
 

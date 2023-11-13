@@ -20,7 +20,7 @@ function Card ({title, strength, description, price, img}) {
                 </div>
                 </div>
                 <div className={styles.card__price}>
-                    {price}
+                    {price} $
                 </div>
             </div>
         </div>

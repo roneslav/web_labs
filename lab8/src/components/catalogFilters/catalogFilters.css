@@ -32,3 +32,8 @@
 .apply-button:hover {
     background-color: #625f5f;
   }
+
+.catalog-filters__button{
+    display: flex;
+    justify-content: end;
+}

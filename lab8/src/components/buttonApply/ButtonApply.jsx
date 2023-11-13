@@ -2,12 +2,12 @@ import React from "react";
 
 import './buttonApply.css'
 
-function ButtonApply() {
+function ButtonApply({ onClick }) {
     return(
         <div className="button__apply">
-                <button className="apply-button" type="button" >
-                    Apply
-                </button>
+            <button className="apply-button" onClick={onClick}>
+                Apply
+            </button>
         </div>
 
     );
