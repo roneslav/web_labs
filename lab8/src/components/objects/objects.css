@@ -8,3 +8,7 @@
     justify-content: space-between;
 }
 
+.card__button{
+    display: none;
+}
+

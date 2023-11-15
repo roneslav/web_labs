@@ -1,6 +1,6 @@
 import CatalogFilters from "../catalogFilters/CatalogFilters";
 import Card from "../card/Card";
-import {useState} from "react";
+import React, {useState} from "react";
 
 import './catalogObjects.css'
 
@@ -8,11 +8,10 @@ import diamondImg from "../../img/diamond.jpg";
 import rubinImg from "../../img/rubin.jpg";
 import smaragdImg from "../../img/smaragd.jpg";
 import stoneImg from "../../img/stone.jpg";
-import {Link} from "react-router-dom";
 
-const objectsData = [
+export const objectsData = [
   {
-      id: 1,
+      id: 0,
       title: "Diamond",
       strength: "high",
       img: diamondImg,
@@ -20,6 +19,7 @@ const objectsData = [
       price: 1000,
   },
   {
+      id: 1,
       title: "Rubin",
       strength: "low",
       img: rubinImg,
@@ -27,6 +27,7 @@ const objectsData = [
       price: 800,
   },
   {
+      id: 2,
       title: "Smaragd",
       strength: "medium",
       img: smaragdImg,
@@ -34,13 +35,15 @@ const objectsData = [
       price: 900,
   },
   {
+      id: 3,
       title: "Stone",
       strength: "low",
       img: stoneImg,
       description: "It is a jewelry stone.",
       price: 100,
   },
-      {
+  {
+      id: 4,
       title: "Diamond",
       strength: "high",
       img: diamondImg,
@@ -48,6 +51,7 @@ const objectsData = [
       price: 2000,
   },
   {
+      id: 5,
       title: "Rubin",
       strength: "low",
       img: rubinImg,
@@ -55,6 +59,7 @@ const objectsData = [
       price: 450,
   },
   {
+      id: 6,
       title: "Smaragd",
       strength: "medium",
       img: smaragdImg,
@@ -62,6 +67,7 @@ const objectsData = [
       price: 700,
   },
   {
+      id: 7,
       title: "Stone",
       strength: "low",
       img: stoneImg,
@@ -70,48 +76,45 @@ const objectsData = [
   },
 ];
 
-function CatalogObjects({onFilterApply}) {
-    const allObjectsData = objectsData;
-    const [filteredObjects, setFilteredObjects] = useState(allObjectsData);
+function CatalogObjects({ onFilterApply }) {
+  const allObjectsData = objectsData;
+  const [filteredObjects, setFilteredObjects] = useState(allObjectsData);
 
-
-
-    const handleFilterApply = (selectedFilters) => {
+  const handleFilterApply = (selectedFilters) => {
     const searchQuery = document.getElementById("mySearch").value.toLowerCase();
 
     const filtered = allObjectsData.filter((object) => {
-    // Check if the selected filter value is not "Any [property]"
-    const nameMatch =
-      selectedFilters.name !== "Any name" ? object.title === selectedFilters.name : true;
+      // Check if the selected filter value is not "Any [property]"
+      const nameMatch =
+        selectedFilters.name !== "Any name" ? object.title === selectedFilters.name : true;
 
-    // Check if the selected price range is not "Any price"
-    const priceRange = selectedFilters.price.split('-');
-    const minPrice = parseFloat(priceRange[0]);
-    const maxPrice = parseFloat(priceRange[1]);
+      // Check if the selected price range is not "Any price"
+      const priceRange = selectedFilters.price.split('-');
+      const minPrice = parseFloat(priceRange[0]);
+      const maxPrice = parseFloat(priceRange[1]);
 
-    const priceMatch =
-      selectedFilters.price !== "Any price"
-        ? object.price >= minPrice && object.price <= maxPrice
-        : true;
+      const priceMatch =
+        selectedFilters.price !== "Any price"
+          ? object.price >= minPrice && object.price <= maxPrice
+          : true;
 
-    const strengthMatch =
-      selectedFilters.strength !== "Any strength"
-        ? object.strength === selectedFilters.strength
-        : true;
+      const strengthMatch =
+        selectedFilters.strength !== "Any strength"
+          ? object.strength === selectedFilters.strength
+          : true;
 
-    const nameSearchMatch = object.title.toLowerCase().includes(searchQuery);
+      const nameSearchMatch = object.title.toLowerCase().includes(searchQuery);
 
-    // Return true if all conditions are met
-    return nameMatch && priceMatch && strengthMatch && nameSearchMatch;
-  });
+      // Return true if all conditions are met
+      return nameMatch && priceMatch && strengthMatch && nameSearchMatch;
+    });
 
+    // Update the state with the filtered objects
+    setFilteredObjects(filtered);
 
-
-  // Update the state with the filtered objects
-  setFilteredObjects(filtered);
-};
-
-
+    // Pass the filtered objects to the parent component
+    onFilterApply(filtered);
+  };
 
   return (
     <section className="catalog">
@@ -120,20 +123,19 @@ function CatalogObjects({onFilterApply}) {
       </div>
       <div className="catalog-objects">
         {filteredObjects.map((object, index) => (
-          // <Link to={`/object/${index}`} key={index}>
-            <Card
-              title={object.title}
-              strength={object.strength}
-              img={object.img}
-              description={object.description}
-              price={object.price}
-            />
-          // </Link>
+          <Card
+               key={index}
+               title={object.title}
+               strength={object.strength}
+               img={object.img}
+               description={object.description}
+               price={object.price}
+               itemId={object.id}
+          />
         ))}
       </div>
     </section>
-  )
+  );
 }
-
 
 export default CatalogObjects;

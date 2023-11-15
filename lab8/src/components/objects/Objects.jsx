@@ -17,8 +17,6 @@ import stoneImg from './../../img/stone.jpg'
     ];
 
 const Objects = () => {
-
-
     return (
         <section className="objects">
             <div className="container">

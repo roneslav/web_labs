@@ -50,8 +50,8 @@
 
 .card__body {
     display: flex;
-    justify-content: space-between;
-    column-gap: 7px;
+    /*justify-content: space-between;*/
+    column-gap: 70px;
     align-items: center;
 }
 
@@ -74,4 +74,9 @@
     font-size: 20px;
     line-height: 2.08;
     position: relative;
+}
+
+.card__button{
+    display: flex;
+    justify-content: start;
 }
