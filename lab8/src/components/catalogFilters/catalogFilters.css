@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
+    width: 100%;
+    gap: 3rem;
 }
 
 .catalog-filters__types{
@@ -35,5 +37,14 @@
 
 .catalog-filters__button{
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+}
+
+.catalog-filters__search{
+    border-radius: 20px;
+
+
+}
+
+.catalog-filters__search:hover{
 }

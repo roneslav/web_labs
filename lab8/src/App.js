@@ -9,6 +9,7 @@ import ButtonView from './components/buttonView/ButtonView'
 import HomePage from "./pages/home/HomePage";
 import Catalog from "./pages/catalog/Catalog";
 import Cart from "./pages/cart/Cart";
+import ObjectInfo from "./pages/objectInfo/ObjectInfo";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/HomePage" element={<HomePage/>} />
               <Route path="/Catalog" element ={<Catalog/>} />
               <Route path="/Cart" element ={<Cart/>} />
+              {/*<Route path="/object/:objectId" component={ObjectInfo} />*/}
           </Routes>
           <Footer/>
       </Router>

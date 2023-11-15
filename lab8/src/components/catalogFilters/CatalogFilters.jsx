@@ -54,7 +54,7 @@ function CatalogFilters({ onFilterApply }) {
     { options: strengthOptions, settings: strengthSettings },
   ];
 
-  const handleApplyClick = () => {
+    const handleApplyClick = () => {
     const selectedFilters = {
       name: document.getElementById(nameSettings.id).value,
       price: document.getElementById(priceSettings.id).value,
@@ -74,6 +74,7 @@ function CatalogFilters({ onFilterApply }) {
             </div>
           ))}
         </div>
+        <input type="search" id="mySearch" className="catalog-filters__search" placeholder="Search the stones…" />
         <div className="catalog-filters__button">
           <ButtonApply onClick={handleApplyClick} />
         </div>

@@ -8,9 +8,11 @@ import diamondImg from "../../img/diamond.jpg";
 import rubinImg from "../../img/rubin.jpg";
 import smaragdImg from "../../img/smaragd.jpg";
 import stoneImg from "../../img/stone.jpg";
+import {Link} from "react-router-dom";
 
 const objectsData = [
   {
+      id: 1,
       title: "Diamond",
       strength: "high",
       img: diamondImg,
@@ -38,14 +40,46 @@ const objectsData = [
       description: "It is a jewelry stone.",
       price: 100,
   },
+      {
+      title: "Diamond",
+      strength: "high",
+      img: diamondImg,
+      description: "It is a jewelry stone.",
+      price: 2000,
+  },
+  {
+      title: "Rubin",
+      strength: "low",
+      img: rubinImg,
+      description: "It is a jewelry stone.",
+      price: 450,
+  },
+  {
+      title: "Smaragd",
+      strength: "medium",
+      img: smaragdImg,
+      description: "It is a jewelry stone.",
+      price: 700,
+  },
+  {
+      title: "Stone",
+      strength: "low",
+      img: stoneImg,
+      description: "It is a jewelry stone.",
+      price: 60,
+  },
 ];
 
-function CatalogObjects() {
+function CatalogObjects({onFilterApply}) {
     const allObjectsData = objectsData;
     const [filteredObjects, setFilteredObjects] = useState(allObjectsData);
 
+
+
     const handleFilterApply = (selectedFilters) => {
-  const filtered = allObjectsData.filter((object) => {
+    const searchQuery = document.getElementById("mySearch").value.toLowerCase();
+
+    const filtered = allObjectsData.filter((object) => {
     // Check if the selected filter value is not "Any [property]"
     const nameMatch =
       selectedFilters.name !== "Any name" ? object.title === selectedFilters.name : true;
@@ -65,9 +99,13 @@ function CatalogObjects() {
         ? object.strength === selectedFilters.strength
         : true;
 
+    const nameSearchMatch = object.title.toLowerCase().includes(searchQuery);
+
     // Return true if all conditions are met
-    return nameMatch && priceMatch && strengthMatch;
+    return nameMatch && priceMatch && strengthMatch && nameSearchMatch;
   });
+
+
 
   // Update the state with the filtered objects
   setFilteredObjects(filtered);
@@ -82,18 +120,19 @@ function CatalogObjects() {
       </div>
       <div className="catalog-objects">
         {filteredObjects.map((object, index) => (
-          <Card
-            key={index}
-            title={object.title}
-            strength={object.strength}
-            img={object.img}
-            description={object.description}
-            price={object.price}
-          />
+          // <Link to={`/object/${index}`} key={index}>
+            <Card
+              title={object.title}
+              strength={object.strength}
+              img={object.img}
+              description={object.description}
+              price={object.price}
+            />
+          // </Link>
         ))}
       </div>
     </section>
-  );
+  )
 }
 
 
