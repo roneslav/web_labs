@@ -11,9 +11,9 @@ import stoneImg from "./../../img/stone.jpg";
 
 
 const newCardsData = [
-    { title: "Stone", img: stoneImg, strength: "high", description: "It is a jewelry stone.", price: 100 },
-    { title: "Diamond", img: diamondImg, strength: "high", description: "It is a jewelry stone.", price: 1000 },
-    { title: "Rubin", img: rubinImg, strength: "low", description: "It is a jewelry stone.", price: 800 },
+    {id: 3, title: "Stone", img: stoneImg, strength: "high", description: "It is a jewelry stone.", price: 100 },
+    {id: 4, title: "Diamond", img: diamondImg, strength: "high", description: "It is a jewelry stone.", price: 1000 },
+    {id: 5, title: "Rubin", img: rubinImg, strength: "low", description: "It is a jewelry stone.", price: 800 },
 ];
 
 function ButtonView() {
@@ -25,7 +25,7 @@ function ButtonView() {
                 {showMore && (
                     <div className="objects__cards">
                         {newCardsData.map((card, e) => (
-                            <Card key={e} title={card.title} img={card.img} strength={card.strength} description={card.description} price={card.price} />
+                            <Card key={e} itemId={card.id} title={card.title} img={card.img} strength={card.strength} description={card.description} price={card.price} />
                         ))}
                     </div>
                 )}

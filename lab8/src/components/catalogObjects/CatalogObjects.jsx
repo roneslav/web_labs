@@ -1,4 +1,4 @@
-import CatalogFilters from "../catalogFilters/CatalogFilters";
+import CatalogFilters from "./../catalogFilters/CatalogFilters";
 import Card from "../card/Card";
 import React, {useState} from "react";
 
@@ -8,6 +8,7 @@ import diamondImg from "../../img/diamond.jpg";
 import rubinImg from "../../img/rubin.jpg";
 import smaragdImg from "../../img/smaragd.jpg";
 import stoneImg from "../../img/stone.jpg";
+
 
 export const objectsData = [
   {
@@ -76,7 +77,7 @@ export const objectsData = [
   },
 ];
 
-function CatalogObjects({ onFilterApply }) {
+const CatalogObjects=()=> {
   const allObjectsData = objectsData;
   const [filteredObjects, setFilteredObjects] = useState(allObjectsData);
 
@@ -84,11 +85,9 @@ function CatalogObjects({ onFilterApply }) {
     const searchQuery = document.getElementById("mySearch").value.toLowerCase();
 
     const filtered = allObjectsData.filter((object) => {
-      // Check if the selected filter value is not "Any [property]"
       const nameMatch =
         selectedFilters.name !== "Any name" ? object.title === selectedFilters.name : true;
 
-      // Check if the selected price range is not "Any price"
       const priceRange = selectedFilters.price.split('-');
       const minPrice = parseFloat(priceRange[0]);
       const maxPrice = parseFloat(priceRange[1]);
@@ -105,15 +104,10 @@ function CatalogObjects({ onFilterApply }) {
 
       const nameSearchMatch = object.title.toLowerCase().includes(searchQuery);
 
-      // Return true if all conditions are met
       return nameMatch && priceMatch && strengthMatch && nameSearchMatch;
     });
 
-    // Update the state with the filtered objects
     setFilteredObjects(filtered);
-
-    // Pass the filtered objects to the parent component
-    onFilterApply(filtered);
   };
 
   return (
