@@ -30,3 +30,5 @@
 Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab7)
 
 ***
+### Лабораторна робота №8 (Варіант 17)
+Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab8)
