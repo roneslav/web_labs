@@ -4,10 +4,10 @@ const cors = require('cors');
 
 const app = express();
 
-const diamondImg = '/img/diamond.jpg';
-const rubinImg = '/img/rubin.jpg';
-const smaragdImg = '/img/smaragd.jpg';
-const stoneImg = '/img/stone.jpg';
+const diamondImg ='./img/diamond.jpg';
+const rubinImg = './img/rubin.jpg';
+const smaragdImg = './img/smaragd.jpg';
+const stoneImg = './img/stone.jpg';
 
 const path = require('path');
 
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.use(express.static(path.join('C:','Users','levms','web','lab8')));
+app.use(express.static(path.join('C:','Users','levms','web','lab8',)));
 
 const objectsData = [
   {
@@ -84,14 +84,14 @@ const objectsData = [
       description: "It is a jewelry stone.",
       price: 60,
   },
-    {
-      id: 22,
-      title: "Stone12345",
-      strength: "low",
-      img: stoneImg,
-      description: "It is a jewelry stone.",
-      price: 60,
-    }
+    // {
+    //   id: 22,
+    //   title: "Stone12345",
+    //   strength: "low",
+    //   img: stoneImg,
+    //   description: "It is a jewelry stone.",
+    //   price: 60,
+    // }
 ]
 
 // Middleware
@@ -106,7 +106,7 @@ let itemsData = [...objectsData];
 
 // Root route to send index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname,'my-app'));
+  res.sendFile(path.join(__dirname,'server'));
 });
 
 // GET /items - Fetch all items
@@ -121,4 +121,4 @@ app.listen(PORT, () => {
 });
 
 // Exporting for testing purposes
-module.exports = app;
+module.exports = { app, objectsData };
