@@ -114,6 +114,17 @@ app.get('/get', (req, res) => {
     res.json(itemsData);
 });
 
+app.get('/get/:stoneId', (req, res) => {
+  const stoneId = parseInt(req.params.stoneId, 10);
+  const stoneInfo = itemsData.find(item => item.id === stoneId);
+
+  if (stoneInfo) {
+    res.json(stoneInfo);
+  } else {
+    res.status(404).json({ error: 'Stone not found' });
+  }
+});
+
 // Server Initialization
 const PORT = 5001;
 app.listen(PORT, () => {
