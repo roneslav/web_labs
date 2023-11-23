@@ -10,21 +10,28 @@ import smaragdImg from "../../img/smaragd.jpg";
 import stoneImg from "../../img/stone.jpg";
 import {getStoneList} from "../../fetching";
 import ElementsGet from "./elementsGet";
+import Loader from "../loader/Loader";
 
 const CatalogObjects=()=> {
+  const [loading, setLoading] = useState(true);
   const [objectsData, setObjectsData] = useState([]);
   const [filteredObjects, setFilteredObjects] = useState(objectsData);
 
       useEffect(() => {
+        setLoading(true);
         getStoneList()
           .then(response => {
                 console.log(response)
               setObjectsData(response.data);
                 setFilteredObjects(response.data)
+              setLoading(false);
           })
           .catch(error => {
             console.error('Error fetching data:', error);
+
+            setLoading(false);
           });
+
       }, []);
   const handleFilterApply = (selectedFilters) => {
     const searchQuery = document.getElementById("mySearch").value.toLowerCase();
@@ -57,6 +64,7 @@ const CatalogObjects=()=> {
 
   return (
     <section className="catalog">
+        {loading ? <Loader /> : null}
       <div className="catalog-filters">
         <CatalogFilters onFilterApply={handleFilterApply} />
       </div>

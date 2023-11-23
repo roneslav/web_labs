@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {getDetailedStoneInfo} from "../../fetching";
 
+import Loader from "../../components/loader/Loader";
 import img_static from './../../img/promo.png'
 
 import './objectDetails.css'
@@ -24,14 +25,13 @@ const ObjectDetails = () => {
       });
   }, [id]);
 
-  // if (!selectedItem) {
-  //   return <div>Loading...</div>;
-  // }
-
   const imagePath = img_static;
 
   return (
     <section>
+      {loading ? (
+        <Loader />
+      ) : (
       <div className="object-detail">
         <div className="left-side">
           <img className="object-detail__img" src={imagePath} alt={objectsData.title} height={300} width={300} />
@@ -65,7 +65,7 @@ const ObjectDetails = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>)}
 
       <div className="object-detail__price">Price: {objectsData.price} $</div>
     </section>
