@@ -32,3 +32,8 @@
 ***
 ### Лабораторна робота №8 (Варіант 17)
 Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab8)
+
+***
+### Лабораторна робота №9 (Варіант 17)
+Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab9)
+
