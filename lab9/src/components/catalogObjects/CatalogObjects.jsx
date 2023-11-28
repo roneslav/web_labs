@@ -1,6 +1,6 @@
 import CatalogFilters from "./../catalogFilters/CatalogFilters";
 import Card from "../card/Card";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import './catalogObjects.css'
 
@@ -8,83 +8,35 @@ import diamondImg from "../../img/diamond.jpg";
 import rubinImg from "../../img/rubin.jpg";
 import smaragdImg from "../../img/smaragd.jpg";
 import stoneImg from "../../img/stone.jpg";
-
-
-export const objectsData = [
-  {
-      id: 0,
-      title: "Diamond",
-      strength: "high",
-      img: diamondImg,
-      description: "It is a jewelry stone.",
-      price: 1000,
-  },
-  {
-      id: 1,
-      title: "Rubin",
-      strength: "low",
-      img: rubinImg,
-      description: "It is a jewelry stone.",
-      price: 800,
-  },
-  {
-      id: 2,
-      title: "Smaragd",
-      strength: "medium",
-      img: smaragdImg,
-      description: "It is a jewelry stone.",
-      price: 900,
-  },
-  {
-      id: 3,
-      title: "Stone",
-      strength: "low",
-      img: stoneImg,
-      description: "It is a jewelry stone.",
-      price: 100,
-  },
-  {
-      id: 4,
-      title: "Diamond",
-      strength: "high",
-      img: diamondImg,
-      description: "It is a jewelry stone.",
-      price: 2000,
-  },
-  {
-      id: 5,
-      title: "Rubin",
-      strength: "low",
-      img: rubinImg,
-      description: "It is a jewelry stone.",
-      price: 450,
-  },
-  {
-      id: 6,
-      title: "Smaragd",
-      strength: "medium",
-      img: smaragdImg,
-      description: "It is a jewelry stone.",
-      price: 700,
-  },
-  {
-      id: 7,
-      title: "Stone",
-      strength: "low",
-      img: stoneImg,
-      description: "It is a jewelry stone.",
-      price: 60,
-  },
-];
+import {getStoneList} from "../../fetching";
+import ElementsGet from "./elementsGet";
+import Loader from "../loader/Loader";
 
 const CatalogObjects=()=> {
-  const allObjectsData = objectsData;
-  const [filteredObjects, setFilteredObjects] = useState(allObjectsData);
+  const [loading, setLoading] = useState(true);
+  const [objectsData, setObjectsData] = useState([]);
+  const [filteredObjects, setFilteredObjects] = useState(objectsData);
 
+      useEffect(() => {
+        setLoading(true);
+        getStoneList()
+          .then(response => {
+                console.log(response)
+              setObjectsData(response.data);
+                setFilteredObjects(response.data)
+              setLoading(false);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+
+            setLoading(false);
+          });
+
+      }, []);
   const handleFilterApply = (selectedFilters) => {
     const searchQuery = document.getElementById("mySearch").value.toLowerCase();
 
-    const filtered = allObjectsData.filter((object) => {
+    const filtered = objectsData.filter((object) => {
       const nameMatch =
         selectedFilters.name !== "Any name" ? object.title === selectedFilters.name : true;
 
@@ -107,11 +59,12 @@ const CatalogObjects=()=> {
       return nameMatch && priceMatch && strengthMatch && nameSearchMatch;
     });
 
-    setFilteredObjects(filtered);
+    setFilteredObjects(filtered)
   };
 
   return (
     <section className="catalog">
+        {loading ? <Loader /> : null}
       <div className="catalog-filters">
         <CatalogFilters onFilterApply={handleFilterApply} />
       </div>
