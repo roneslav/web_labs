@@ -1,10 +1,12 @@
 import {Form, Formik, useField} from 'formik';
 import * as Yup from 'yup';
 import FormError from "../../components/formError/formError";
+import { useNavigate } from 'react-router-dom';
+
+import './checkout.css';
 
 const CustomTextInput = ({label, ...props}) => {
     const [field, meta] = useField(props);
-
     return (
         <>
             <label htmlFor={props.id || props.name}>{label}</label>
@@ -14,11 +16,17 @@ const CustomTextInput = ({label, ...props}) => {
     )
 }
 
+const goBack = () => {
+    window.history.back();
+};
+
 function Checkout (){
+    const navigate = useNavigate();
+
     return(
         <section>
             <div className="ckeckout-box">
-                <div className="checkout-box__forms">
+                <div className="checkout-box__formik">
                     <Formik
                         initialValues={{
                             first_name: '',
@@ -73,20 +81,31 @@ function Checkout (){
                                 alert(JSON.stringify(values, null, 2));
                                 resetForm();
                                 setSubmitting(false);
+
+                                navigate('/success');
                             }, 1000)
                         }}
                     >
                         {props => (
                             <Form>
-                                <h1>Checkout</h1>
-                                <CustomTextInput label='First Name' name='first_name' type='text' placeholder='Frank' />
-                                <CustomTextInput label='Last Name' name='last_name' type='text' placeholder='Potapenko' />
-                                <CustomTextInput label='Date of birth' name='date_of_birth' type='text' placeholder='DD.MM.YYYY' />
-                                <CustomTextInput label='Email' name='email' type='text' placeholder='frank@thetank.com' />
-                                <CustomTextInput label='Phone number' name='phone' type='text' placeholder='+38...' />
-                                <button type='submit'>
-                                    {props.isSubmitting ? 'Loading...' : 'Submit'}
-                                </button>
+                                <div className='checkout-box__forms'>
+                                    <h1 className='checkout-box__title'>Checkout</h1>
+                                    <CustomTextInput label='First Name' name='first_name' type='text' placeholder='Frank' />
+                                    <CustomTextInput label='Last Name' name='last_name' type='text' placeholder='Potapenko' />
+                                    <CustomTextInput label='Date of birth' name='date_of_birth' type='text' placeholder='DD.MM.YYYY' />
+                                    <CustomTextInput label='Email' name='email' type='text' placeholder='frank@thetank.com' />
+                                    <CustomTextInput label='Phone number' name='phone' type='text' placeholder='+38...' />
+                                </div>
+
+                                <div className='btn-checkout'>
+                                    <button className='btn-to-catalog' onClick={goBack}>
+                                        Go back
+                                    </button>
+                                    <button type='submit'>
+                                        {props.isSubmitting ? 'Loading...' : 'Submit'}
+                                    </button>
+                                </div>
+
                             </Form>
                         )}
                     </Formik>
