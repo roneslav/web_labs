@@ -10,6 +10,8 @@ import Cart from "./pages/cart/Cart";
 import ObjectDetails from "./pages/objectDetails/ObjectDetails";
 import {getStoneList} from "./fetching";
 import axios from "axios";
+import Checkout from "./pages/checkout/Checkout";
+import Success from "./pages/success/Success";
 
 
 function App() {
@@ -39,7 +41,8 @@ function App() {
             element={<ObjectDetails objectsData={objectsData} />}
         />
         <Route path="/Cart" element={<Cart />} />
-
+        <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/Success" element={<Success />} />
       </Routes>
       <Footer />
     </Router>
