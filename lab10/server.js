@@ -11,13 +11,11 @@ const stoneImg = './img/stone.jpg';
 
 const path = require('path');
 
-
-// Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 
-app.use(express.static(path.join('C:','Users','levms','web','lab8',)));
+app.use(express.static(path.join('C:','Users','levms','web','lab10',)));
 
 const objectsData = [
   {
@@ -94,27 +92,28 @@ const objectsData = [
     // }
 ]
 
-// Middleware
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/img', express.static(path.join(__dirname, 'src', 'img')));
 
-
-// In-memory data storage initialized with predefined list
 let itemsData = [...objectsData];
 
-
-// Root route to send index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'server'));
 });
 
-// GET /items - Fetch all items
-app.get('/get', (req, res) => {
-    res.json(itemsData);
+app.get('/stones', (req, res) => {
+  const { title } = req.query;
+
+  let filteredItems = itemsData;
+    if( title ) {
+        filteredItems = itemsData.filter(item => item.title.toLowerCase() === title.toLowerCase());
+    }
+
+  res.json(filteredItems);
 });
 
-app.get('/get/:stoneId', (req, res) => {
+app.get('/stones/:stoneId', (req, res) => {
   const stoneId = parseInt(req.params.stoneId, 10);
   const stoneInfo = itemsData.find(item => item.id === stoneId);
 
@@ -125,11 +124,15 @@ app.get('/get/:stoneId', (req, res) => {
   }
 });
 
-// Server Initialization
+app.get('/stonetypes', (req, res) => {
+  const stoneTypes = ["title", "strength", "price"];
+
+  res.json(stoneTypes);
+});
+
 const PORT = 5001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
-// Exporting for testing purposes
 module.exports = { app, objectsData };

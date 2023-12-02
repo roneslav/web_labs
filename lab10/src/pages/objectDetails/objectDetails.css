@@ -28,6 +28,10 @@
     display: flex;
 }
 
+.input__text{
+    font-size: small;
+}
+
 .object-detail__price{
     display: flex;
     justify-content: center;
@@ -37,3 +41,9 @@
     font-size: 30px;
 }
 
+#fname{
+    height: 1.5rem;
+    width: 11rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}

@@ -1,6 +1,6 @@
 import CatalogFilters from "./../catalogFilters/CatalogFilters";
 import Card from "../card/Card";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import './catalogObjects.css'
 
@@ -8,7 +8,7 @@ import diamondImg from "../../img/diamond.jpg";
 import rubinImg from "../../img/rubin.jpg";
 import smaragdImg from "../../img/smaragd.jpg";
 import stoneImg from "../../img/stone.jpg";
-import {getStoneList} from "../../fetching";
+import {getStoneList, getStoneTypes} from "../../fetching";
 import ElementsGet from "./elementsGet";
 import Loader from "../loader/Loader";
 
@@ -16,14 +16,20 @@ const CatalogObjects=()=> {
   const [loading, setLoading] = useState(true);
   const [objectsData, setObjectsData] = useState([]);
   const [filteredObjects, setFilteredObjects] = useState(objectsData);
+  const [selectedFilters, setSelectedFilters] = useState({
+    name: "Any name",
+    price: "Any price",
+    strength: "Any strength"
+  });
+  const [stoneTypes, setStoneTypes] = useState([]);
 
-      useEffect(() => {
-        setLoading(true);
-        getStoneList()
+  useEffect(() => {
+      setLoading(true);
+      getStoneList()
           .then(response => {
-                console.log(response)
+              console.log(response)
               setObjectsData(response.data);
-                setFilteredObjects(response.data)
+              setFilteredObjects(response.data)
               setLoading(false);
           })
           .catch(error => {
@@ -32,7 +38,14 @@ const CatalogObjects=()=> {
             setLoading(false);
           });
 
-      }, []);
+      getStoneTypes()
+          .then((response) => {
+            setStoneTypes(response.data);
+          })
+          .catch((error) => {
+            console.error("Error fetching stone types:", error);
+          });
+  }, []);
   const handleFilterApply = (selectedFilters) => {
     const searchQuery = document.getElementById("mySearch").value.toLowerCase();
 
@@ -61,6 +74,13 @@ const CatalogObjects=()=> {
 
     setFilteredObjects(filtered)
   };
+
+  const [nameFilter, setNameFilter] = useState("Any name");
+  const [priceFilter, setPriceFilter] = useState("Any price");
+  const [strengthFilter, setStrengthFilter] = useState("Any strength");
+  const [searchQuery, setSearchQuery] = useState("");
+
+
 
   return (
     <section className="catalog">

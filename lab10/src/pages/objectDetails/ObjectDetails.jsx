@@ -7,14 +7,19 @@ import img_static from './../../img/promo.png'
 
 import './objectDetails.css'
 
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/actions'
+
 const ObjectDetails = () => {
-  const { id } = useParams();
+  const { id, title } = useParams();
   const [objectsData, setObjectsData] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [inputValue, setInputValue] = useState("")
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setLoading(true);
-    getDetailedStoneInfo(id)
+    getDetailedStoneInfo(id, title)
       .then((response) => {
         setObjectsData(response.data);
         setLoading(false);
@@ -23,7 +28,21 @@ const ObjectDetails = () => {
         setLoading(false);
         console.error("Помилка під час отримання даних про камінь:", error);
       });
-  }, [id]);
+  }, [id, title]);
+
+  const inputChange = (event) => {
+    const inputValue = event.target.value;
+    setInputValue(inputValue);
+  };
+
+  const handleAddToCart = () => {
+        let amount = 1;
+        if (parseInt(inputValue) > 1) {
+          amount = parseInt(inputValue);
+        }
+        dispatch(addToCart(objectsData, amount));
+        alert("Your object added to cart")
+    };
 
   const imagePath = img_static;
 
@@ -51,17 +70,13 @@ const ObjectDetails = () => {
             <div className="input">
               <form>
                 <label>
-                  <input type="number" id="fname" placeholder="Countable field" min={1} />
+                    <p className="input__text">Add number of objects:</p>
+                    <input type="number" id="fname" placeholder="1" min={1} onChange={inputChange}/>
                 </label>
               </form>
             </div>
             <div className="options">
-              <select>
-                <option value="someOption">Any item</option>
-                <option value="otherOption">Item 1</option>
-                <option value="otherOption">Item 2</option>
-                <option value="otherOption">Item 3</option>
-              </select>
+              <button onClick={handleAddToCart}>Add to cart</button>
             </div>
           </div>
         </div>
