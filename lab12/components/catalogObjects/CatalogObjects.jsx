@@ -9,19 +9,12 @@ import rubinImg from "../../img/rubin.jpg";
 import smaragdImg from "../../img/smaragd.jpg";
 import stoneImg from "../../img/stone.jpg";
 import {getStoneList, getStoneTypes} from "../../fetching";
-import ElementsGet from "./elementsGet";
 import Loader from "../loader/Loader";
 
 const CatalogObjects=()=> {
   const [loading, setLoading] = useState(true);
   const [objectsData, setObjectsData] = useState([]);
   const [filteredObjects, setFilteredObjects] = useState(objectsData);
-  const [selectedFilters, setSelectedFilters] = useState({
-    name: "Any name",
-    price: "Any price",
-    strength: "Any strength"
-  });
-  const [stoneTypes, setStoneTypes] = useState([]);
 
   useEffect(() => {
       setLoading(true);
@@ -36,14 +29,6 @@ const CatalogObjects=()=> {
             console.error('Error fetching data:', error);
 
             setLoading(false);
-          });
-
-      getStoneTypes()
-          .then((response) => {
-            setStoneTypes(response.data);
-          })
-          .catch((error) => {
-            console.error("Error fetching stone types:", error);
           });
   }, []);
   const handleFilterApply = (selectedFilters) => {
@@ -74,12 +59,6 @@ const CatalogObjects=()=> {
 
     setFilteredObjects(filtered)
   };
-
-  const [nameFilter, setNameFilter] = useState("Any name");
-  const [priceFilter, setPriceFilter] = useState("Any price");
-  const [strengthFilter, setStrengthFilter] = useState("Any strength");
-  const [searchQuery, setSearchQuery] = useState("");
-
 
 
   return (
