@@ -19,10 +19,29 @@ export const Register = () => {
             alert("Please fill every field");
         } else {
             setFlag(false);
-            localStorage.setItem("Username", JSON.stringify(name));
-            localStorage.setItem("Email", JSON.stringify(email));
-            localStorage.setItem("Password", JSON.stringify(password));
-            localStorage.setItem("Retype password", JSON.stringify(retypePassword));
+
+            // Retrieve existing users from local storage or initialize an empty array
+            const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Check if the email is already taken
+            if (existingUsers.some(user => user.email === email)) {
+                alert("Email is already taken. Please choose another.");
+                return;
+            }
+
+            // Create a new user object
+            const newUser = {
+                name,
+                email,
+                password,
+                // Add other properties as needed
+            };
+
+            // Add the new user to the array
+            existingUsers.push(newUser);
+
+            // Save the updated array back to local storage
+            localStorage.setItem("users", JSON.stringify(existingUsers));
 
             console.log("Saved in local storage!");
             setLogin(!login);
@@ -42,7 +61,7 @@ export const Register = () => {
                         <label>Username</label>
                         <input type='text' className='form-control' placeholder='Enter unique username'
                                onChange={(event) => setName(event.target.value)}
-                                />
+                        />
                     </div>
                     <div className='form-group'>
                         <label>Email</label>

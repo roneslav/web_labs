@@ -3,9 +3,10 @@ import React from "react";
 import logoImg from '../../img/logo.svg'
 
 import './header.css'
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
-function Header () {
+function Header ({logout, ...rest }) {
+
     return (
         <header className="header">
             <div className="container">
@@ -15,9 +16,24 @@ function Header () {
                         <span>My Stones</span>
                     </div>
                     <nav className="header__nav">
-                        <h2><button type="button" className="header__page"><NavLink exact to="/HomePage">Home</NavLink></button></h2>
-                        <h2><button type="button" className="header__page"><NavLink exact to="/Catalog">Catalog</NavLink></button></h2>
-                        <h2><button type="button" className="header__page"><NavLink exact to="/Cart">Cart</NavLink></button></h2>
+                        <h2>
+                            <button type="button" className="header__page"><NavLink exact to="/HomePage">Home</NavLink>
+                            </button>
+                        </h2>
+                        <h2>
+                            <button type="button" className="header__page"><NavLink exact
+                                                                                    to="/Catalog">Catalog</NavLink>
+                            </button>
+                        </h2>
+                        <h2>
+                            <button type="button" className="header__page"><NavLink exact to="/Cart">Cart</NavLink>
+                            </button>
+                        </h2>
+                        <h2>
+                            <button type="button" className="header__page"><NavLink
+                                                                                    to="/Profile">Profile</NavLink>
+                            </button>
+                        </h2>
                     </nav>
                 </div>
             </div>

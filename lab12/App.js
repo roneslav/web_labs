@@ -13,6 +13,7 @@ import Checkout from "./pages/checkout/Checkout";
 import Success from "./pages/success/Success";
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
+import Profile from "./pages/profile/Profile";
 
 
 
@@ -20,53 +21,54 @@ function App() {
 
     const [objectsData, setObjectsData] = useState('');
 
-      useEffect(() => {
+    useEffect(() => {
         getStoneList()
-          .then(response => {
-              console.log(response)
-              setObjectsData(response.data);
-          })
-          .catch(error => {
-            console.error('Error fetching data:', error);
-          });
-      }, []);
-      console.log(objectsData)
+            .then(response => {
+                console.log(response)
+                setObjectsData(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+    console.log(objectsData)
 
     return (
-            <Router>
-                <Header />
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/" element={<Register />} />
-                    <Route
-                        path="/HomePage"
-                        element={<HomePage />}
-                    />
-                    <Route
-                        path="/Catalog"
-                        element={<Catalog />}
-                    />
-                    <Route
-                        path="/Catalog/:id"
-                        element={
-                            <ObjectDetails objectsData={objectsData} />
-                        }
-                    />
-                    <Route
-                        path="/Cart"
-                        element={<Cart />}
-                    />
-                    <Route
-                        path="/Checkout"
-                        element={<Checkout />}
-                    />
-                    <Route
-                        path="/Success"
-                        element={<Success />}
-                    />
-                </Routes>
-                <Footer />
-            </Router>
+        <Router>
+            <Header />
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Register />} />
+                <Route
+                    path="/HomePage"
+                    element={<HomePage />}
+                />
+                <Route
+                    path="/Catalog"
+                    element={<Catalog />}
+                />
+                <Route
+                    path="/Catalog/:id"
+                    element={
+                        <ObjectDetails objectsData={objectsData} />
+                    }
+                />
+                <Route
+                    path="/Cart"
+                    element={<Cart />}
+                />
+                <Route
+                    path="/Checkout"
+                    element={<Checkout />}
+                />
+                <Route
+                    path="/Success"
+                    element={<Success />}
+                />
+                <Route path='/Profile' element={<Profile />} />
+            </Routes>
+            <Footer />
+        </Router>
     );
 }
 
