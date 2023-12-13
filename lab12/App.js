@@ -14,15 +14,19 @@ import Success from "./pages/success/Success";
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
 import Profile from "./pages/profile/Profile";
-import PrivateRoutes from "./components/protectedRoutes/ProtectedRoutes";
+import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes";
 
 
 
 function App() {
 
     const [objectsData, setObjectsData] = useState('');
+    const [loggedUser, setLoggedUser] = useState(null);
+    const loggedInUserIndex = localStorage.getItem("loggedInUserIndex");
+
 
     useEffect(() => {
+        setLoggedUser(loggedInUserIndex);
         getStoneList()
             .then(response => {
                 console.log(response)
@@ -34,29 +38,38 @@ function App() {
     }, []);
     console.log(objectsData)
 
-    return (
-        <Router>
-            <Header />
-            <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/" element={<Register />} />
-                {/*<Route element={<PrivateRoutes />}>*/}
+    if(loggedUser) {
+        return (
+            <Router>
+                <Header />
+                <Routes>
+                    {/*<Route element={<ProtectedRoutes />}>*/}
                     <Route path="/HomePage" element={<HomePage />} />
                     <Route path="/Catalog" element={<Catalog />} />
-                    <Route path="/Catalog/:id"
-                        element={
-                            <ObjectDetails objectsData={objectsData} />
-                        }
-                    />
+                    <Route path="/Catalog/:id" element={ <ObjectDetails objectsData={objectsData} /> } />
                     <Route path="/Cart" element={<Cart />} />
                     <Route path="/Checkout" element={<Checkout />} />
                     <Route path="/Success" element={<Success />} />
-                    <Route path='/Profile' element={<Profile />} />
-                {/*</Route>*/}
-            </Routes>
-            <Footer />
-        </Router>
-    );
+                    <Route path='/Profile' element={<Profile setLoggedUser={setLoggedUser}/>} />
+                    {/*</Route>*/}
+                </Routes>
+                <Footer />
+            </Router>
+        );
+    }else{
+        return(
+            <Router>
+                {/*<Header />*/}
+                <Routes>
+                    <Route path="/login" element={<Login setLoggedUser={setLoggedUser}/>} />
+                    <Route path="/" element={<Register />} />
+                </Routes>
+                {/*<Footer />*/}
+            </Router>
+        );
+    }
+
+
 }
 
 export default App;

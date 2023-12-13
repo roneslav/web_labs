@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 
 import './login.css';
 
-function Login() {
+function Login({setLoggedUser}) {
     const [emaillog, setEmaillog] = useState('');
     const [passwordlog, setPasswordlog] = useState('');
     const [flag, setFlag] = useState(false);
@@ -14,12 +14,12 @@ function Login() {
         return <Navigate to="/HomePage" />;
     }
 
-    function handleLogin(e) {
+
+    const handleLogin = (e) => {
         e.preventDefault();
 
         const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
 
-        // Check if there are no users in local storage
         if (existingUsers.length === 0) {
             setFlag(true);
             alert('No user data found. Please sign up.');
@@ -32,11 +32,12 @@ function Login() {
             setFlag(true);
             alert('Enter valid email and password.');
         } else {
-            // Set the index of the logged-in user in local storage
+            // setLoggedUser(existingUsers.indexOf(user));
             localStorage.setItem('loggedInUserIndex', existingUsers.indexOf(user));
-
+            window.location.reload();
             setHome(!home);
             setFlag(false);
+
         }
     }
 

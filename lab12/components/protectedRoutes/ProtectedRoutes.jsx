@@ -1,10 +1,11 @@
 import { Outlet, Navigate } from 'react-router-dom'
 
-const PrivateRoutes = () => {
-    let auth = {'token': false}
+const ProtectedRoutes = () => {
+    let auth = {'loggedInUserIndex': false}
     return(
-        auth.token ? <Outlet/> : <Navigate to="/login"/>
+        auth.loggedInUserIndex ? <Outlet/> : <Navigate to="/login"/>
     )
 }
 
-export default PrivateRoutes
+export default ProtectedRoutes;
+

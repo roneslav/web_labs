@@ -9,7 +9,6 @@ function Success() {
 
     const goToCatalog = () => {
         navigate('/Catalog');
-        window.location.reload();
     };
 
     return (
