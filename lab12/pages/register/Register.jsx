@@ -2,6 +2,7 @@ import './register.css';
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import Login from "../login/Login";
+import {Navigate} from "react-router-dom";
 
 export const Register = () => {
     const [name, setName] = useState("");
@@ -10,6 +11,11 @@ export const Register = () => {
     const [retypePassword, setRetypePassword] = useState("");
     const [flag, setFlag] = useState(false);
     const [login, setLogin] = useState(true);
+
+    const loggedInUserIndex = localStorage.getItem("loggedInUserIndex");
+    if (loggedInUserIndex) {
+        return <Navigate to="/HomePage" />;
+    }
 
     function handleSubmit(e) {
         e.preventDefault();

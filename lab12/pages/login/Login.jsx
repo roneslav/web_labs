@@ -9,6 +9,11 @@ function Login() {
     const [flag, setFlag] = useState(false);
     const [home, setHome] = useState(true);
 
+    const loggedInUserIndex = localStorage.getItem("loggedInUserIndex");
+    if (loggedInUserIndex) {
+        return <Navigate to="/HomePage" />;
+    }
+
     function handleLogin(e) {
         e.preventDefault();
 
@@ -27,6 +32,9 @@ function Login() {
             setFlag(true);
             alert('Enter valid email and password.');
         } else {
+            // Set the index of the logged-in user in local storage
+            localStorage.setItem('loggedInUserIndex', existingUsers.indexOf(user));
+
             setHome(!home);
             setFlag(false);
         }
