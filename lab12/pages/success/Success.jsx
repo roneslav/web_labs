@@ -10,6 +10,7 @@ function Success() {
     const goToCatalog = () => {
         navigate('/Catalog');
     };
+
     return (
         <section>
             <div className='success-box'>
