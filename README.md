@@ -44,3 +44,7 @@
 ***
 ### Лабораторна робота №11 (Варіант 17)
 Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab11)
+
+***
+### Лабораторна робота №12 (Варіант 17)
+Посилання на вітку (https://github.com/roneslav/web_labs/tree/lab12)
